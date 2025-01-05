@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{E6ADBCF1-DFBC-F8B0-8418-ED5F9B6AFCCA}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/CalculatorEx2.cs">
+    <Files>
+      <File FileName="Assets/Scenes/CalculatorEx2.cs" Line="35" Column="75" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7f5c848e-26af-43cb-839e-1207167d3a8c" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
