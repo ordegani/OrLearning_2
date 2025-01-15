@@ -15,11 +15,16 @@ public class CalculatorWithEvent : MonoBehaviour
 
     private void OnEnable()//I changed to private
     {
-        _calculateButton.onClick.AddListener(HandleCalculateButtonClick);//keep in the UI components use of - on Enable/Disable                                                                         //less good: in case of use inside Start() - use AddListener but dont forget onClick.RemoveAllListeners()
+        // todo: you have a subscription for the _calculateButton but not for the _calculateButtondisabler
+        // todo: and make sure you use the correct method. when you unsubscribe and subscribe
+        _calculateButton.onClick.AddListener(HandleCalculateButtonClick);//keep in the UI components use of - on Enable/Disable
+                                                                         //less good: in case of use inside Start() - use AddListener but dont forget onClick.RemoveAllListeners()
+                                                                         
     }
 
     private void OnDisable()
     {
+        // todo: also, you don't have RemoveListener for the _calculateButton
         _calculateButtondisabler.onClick.RemoveListener(HandleCalculateButtonClick);
     }
 
@@ -29,16 +34,18 @@ public class CalculatorWithEvent : MonoBehaviour
         float secondNumber = float.Parse(_secondInputField.text);//changed: no underscores inside the scope of the method. Only "PascalCasing".
         int operatorsDropdownIndex = _operatorsDropdown.value;//changed: no underscores inside the scope of the method.Only "PascalCasing".
         string selectedOption = _operatorsDropdown.options[operatorsDropdownIndex].text;//changed: no underscores inside the scope of the method. Only "PascalCasing".
-        bool isZero = false;
-        bool CheckIfSecondNumberIsZero(float num2)
+        bool isZero = false; 
+        
+        bool CheckIfSecondNumberIsZero(float num2) // todo: move it to the separate method. Rename the method 
         {
+            // todo: optimize it to a short version
             if (num2 == 0)
             {
                 return true;
             }
             return false;
         }
-
+        
         switch (selectedOption)
         {
             case "+":
@@ -50,17 +57,16 @@ public class CalculatorWithEvent : MonoBehaviour
 
                 break;
             case "/":
-                isZero = CheckIfSecondNumberIsZero(secondNumber);
-                _result = firstNumber / secondNumber;
-
+                isZero = CheckIfSecondNumberIsZero(secondNumber);  
+                _result = firstNumber / secondNumber; // todo: add check if zero - we shouldn't calculate
                 break;
             case "*":
                 _result = firstNumber * secondNumber;
-
                 break;
         }
 
-        if (isZero)
+        // todo: optimize it to a short version
+        if (isZero) // todo: or we can move it to the Switch and call return if the second value is zero
         {
             _resultField.text = "Error:division by zero is impossible!";
         }
@@ -69,4 +75,6 @@ public class CalculatorWithEvent : MonoBehaviour
             _resultField.text = $"Result: {_result}";
         }
     }
+    
+    // todo: after you do everything check if you still need "isZero" variable.
 }
