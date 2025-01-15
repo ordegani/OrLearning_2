@@ -30,14 +30,6 @@ public class CalculatorWithEvent : MonoBehaviour
         int operatorsDropdownIndex = _operatorsDropdown.value;//changed: no underscores inside the scope of the method.Only "PascalCasing".
         string selectedOption = _operatorsDropdown.options[operatorsDropdownIndex].text;//changed: no underscores inside the scope of the method. Only "PascalCasing".
         bool isZero = false;
-        bool CheckIfSecondNumberIsZero(float num2)
-        {
-            if (num2 == 0)
-            {
-                return true;
-            }
-            return false;
-        }
 
         switch (selectedOption)
         {
@@ -50,7 +42,7 @@ public class CalculatorWithEvent : MonoBehaviour
 
                 break;
             case "/":
-                isZero = CheckIfSecondNumberIsZero(secondNumber);
+                isZero = IsSecondNumberZero(secondNumber);
                 _result = firstNumber / secondNumber;
 
                 break;
@@ -68,5 +60,9 @@ public class CalculatorWithEvent : MonoBehaviour
         {
             _resultField.text = $"Result: {_result}";
         }
+    }
+    bool IsSecondNumberZero(float num2)
+    {
+        return (num2 == 0);
     }
 }

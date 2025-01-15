@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{E6ADBCF1-DFBC-F8B0-8418-ED5F9B6AFCCA}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/PrefabTask.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/CalculatorEx2.cs">
     <Files>
-      <File FileName="Assets/Scenes/CalculatorEx2.cs" Line="23" Column="33" />
-      <File FileName="Assets/Scenes/PrefabTask.cs" Line="27" Column="10" />
+      <File FileName="Assets/Scenes/PrefabTask.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scenes/CalculatorEx2.cs" Line="36" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="71665eaf-5fdb-4e45-871c-5ae87c648d84" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="712d4719-f880-4f9d-87ab-6164ad13ee14" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
