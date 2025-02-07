@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scenes/CalculatorEx2.cs" />
+    <Compile Include="Assets/Scenes/NewBehaviourScript.cs" />
     <Compile Include="Assets/Scenes/PrefabTask.cs" />
   </ItemGroup>
   <ItemGroup>

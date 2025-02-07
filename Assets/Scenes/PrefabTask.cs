@@ -3,15 +3,15 @@ using System.Collections.Generic; // todo: you don't need them yet maybe
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrefabTask : MonoBehaviour
+public class PrefabTask : MonoBehaviour //2D
 {
     [SerializeField] private GameObject _myPrefab;
     [SerializeField] private Canvas _canvas;
     private Vector3 _mousePos;
-<<<<<<< HEAD
+//<<<<<<< HEAD
     private int _myPrefabCount = 0;
-=======
->>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
+
+//>>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
 
     // there is no difference between 'i' and '_mousePos' in terms of the naming.
     // so the name should be '_i'.
@@ -47,9 +47,9 @@ public class PrefabTask : MonoBehaviour
             _mousePos = Input.mousePosition;
             Debug.Log("mouse position (x,y) is:" + _mousePos.x + "," + _mousePos.y);
             //Instantiate _myPrefab and make it's position _mousePos
-<<<<<<< HEAD
+
             Instantiate(_myPrefab, _mousePos, Quaternion.identity, _canvas.transform);
-=======
+
             
             // todo: instantiate is returning the generic type (<T>) which can be whatever is needed for us
             // todo: for now we need to get spawned object and make it part of the canvas
@@ -59,7 +59,7 @@ public class PrefabTask : MonoBehaviour
             // https://discussions.unity.com/t/how-to-parent-spawned-object-from-array-solved/826062/3
             Instantiate(_myPrefab, _mousePos, Quaternion.identity); 
             
->>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
+//>>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
             //add to count to hadle 10 prefabs  instantiate limit in this task
             _myPrefabCount++;
             //Debug.Log(_myPrefab.transform.position);

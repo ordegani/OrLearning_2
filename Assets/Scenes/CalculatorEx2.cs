@@ -34,11 +34,8 @@ public class CalculatorWithEvent : MonoBehaviour
         float secondNumber = float.Parse(_secondInputField.text);//changed: no underscores inside the scope of the method. Only "PascalCasing".
         int operatorsDropdownIndex = _operatorsDropdown.value;//changed: no underscores inside the scope of the method.Only "PascalCasing".
         string selectedOption = _operatorsDropdown.options[operatorsDropdownIndex].text;//changed: no underscores inside the scope of the method. Only "PascalCasing".
-<<<<<<< HEAD
-        bool isZero = false;
 
-=======
-        bool isZero = false; 
+        bool isZero = false;
         
         bool CheckIfSecondNumberIsZero(float num2) // todo: move it to the separate method. Rename the method 
         {
@@ -50,7 +47,7 @@ public class CalculatorWithEvent : MonoBehaviour
             return false;
         }
         
->>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
+
         switch (selectedOption)
         {
             case "+":
@@ -62,14 +59,14 @@ public class CalculatorWithEvent : MonoBehaviour
 
                 break;
             case "/":
-<<<<<<< HEAD
+
                 isZero = IsSecondNumberZero(secondNumber);
                 _result = firstNumber / secondNumber;
 
-=======
+
                 isZero = CheckIfSecondNumberIsZero(secondNumber);  
                 _result = firstNumber / secondNumber; // todo: add check if zero - we shouldn't calculate
->>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
+
                 break;
             case "*":
                 _result = firstNumber * secondNumber;
@@ -86,13 +83,13 @@ public class CalculatorWithEvent : MonoBehaviour
             _resultField.text = $"Result: {_result}";
         }
     }
-<<<<<<< HEAD
+
     bool IsSecondNumberZero(float num2)
     {
         return (num2 == 0);
     }
-=======
+
     
     // todo: after you do everything check if you still need "isZero" variable.
->>>>>>> 7c2b2782e9ecd9362f74e0064d9ffa0d7bb1c580
+
 }
