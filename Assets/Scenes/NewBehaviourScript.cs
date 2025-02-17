@@ -36,7 +36,7 @@ public class NewBehaviourScript : MonoBehaviour //3D
         }
     }
 
-    //Second solution(Good for spawning an obj in general) Good for creating the gam's background>>
+    //Second solution(Good for spawning an obj in general) Good for creating the game's background>>
     private void HandleMouseClick2()
     {
         if (_myPrefabCount < _maxPrefabs)
