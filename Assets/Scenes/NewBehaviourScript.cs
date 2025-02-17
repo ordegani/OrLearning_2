@@ -22,10 +22,14 @@ public class NewBehaviourScript : MonoBehaviour //3D
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+        Color color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         if (_myPrefabCount <= _maxPrefabs && Physics.Raycast(ray, out hit))
         {
-            Instantiate(_myPrefab,hit.point , Quaternion.identity);
+            GameObject newPrefab = Instantiate(_myPrefab, hit.point, Quaternion.identity);
+            newPrefab.GetComponent<Renderer>().material.color = color;
+            //_myPrefab.gameObject.GetComponent<Renderer>().sharedMaterial.color = color;//<<modifying the prefab itself, not the spawned object!
+
             Debug.Log(hit.collider.name);
             Debug.Log(hit.point);
             _myPrefabCount++;
