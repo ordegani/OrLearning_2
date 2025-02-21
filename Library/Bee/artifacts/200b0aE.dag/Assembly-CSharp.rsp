@@ -356,6 +356,7 @@
 "Assets/Scenes/CalculatorEx2.cs"
 "Assets/Scenes/Enum.cs"
 "Assets/Scenes/NewBehaviourScript.cs"
+"Assets/Scenes/ObjectPooling.cs"
 "Assets/Scenes/PrefabTask.cs"
 -langversion:9.0
 /deterministic
