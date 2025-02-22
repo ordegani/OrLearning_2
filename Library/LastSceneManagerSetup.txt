@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/3D prefabs.unity
+- path: Assets/objet pooling.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
