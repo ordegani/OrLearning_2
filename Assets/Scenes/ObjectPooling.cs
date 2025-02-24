@@ -8,21 +8,23 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     private List<GameObject> _bulletPool = new List<GameObject>();
     private int _poolSize = 10;
-    Vector3 _position;
     GameObject _bullet;
+    private Transform _transform;
 
     private void Start()
     {
+        _transform = transform;
+
         //create pool (no randomizing of colors yet)
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject _bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+            GameObject _bullet = Instantiate(_bulletPrefab, _transform.position, Quaternion.identity);
             _bullet.SetActive(false);
             _bulletPool.Add(_bullet);
         }
-}
+    }
 
-private void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -38,24 +40,30 @@ private void Update()
 
         if (Physics.Raycast(ray, out hit))
         {
-            foreach (GameObject _bullet in _bulletPool)
+            foreach (GameObject bullet in _bulletPool)
             {
-                if (!_bullet.activeInHierarchy)
+                if (!bullet.activeInHierarchy)
                 {
-                    _bullet.SetActive(true);
-                    _bullet.transform.position = hit.point;
-                    MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
-                    propertyBlock.SetColor("_Color", Random.ColorHSV());
-                    _bullet.GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+                    bullet.SetActive(true);
+                    bullet.transform.position = hit.point;
+                    RandoiseColor(bullet);
                     //Debug.Log(_bullet.GetComponent<Renderer>().material.color);
-                    return _bullet;
+                    return bullet;
                 }
             }
         }
         // No inactive _bullets available, create a new one (optional)
-        GameObject new_bullet = Instantiate(_bulletPrefab, _position, Quaternion.identity);
+        GameObject new_bullet = Instantiate(_bulletPrefab, hit.point, Quaternion.identity);
         _bulletPool.Add(new_bullet);
-        return _bullet;
+        RandoiseColor(new_bullet);
+        return new_bullet;
+    }
+
+    private void RandoiseColor(GameObject bullet)
+    {
+        MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+        propertyBlock.SetColor("_Color", Random.ColorHSV());
+        bullet.GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
     }
 }
 
