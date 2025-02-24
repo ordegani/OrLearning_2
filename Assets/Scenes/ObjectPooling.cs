@@ -1,59 +1,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Task #8. 11.02.2025 - object pooling && Material block
 public class ObjectPooling : MonoBehaviour
 {
-    //[SerializeField] private Material _someMaterial;
+    //[SerializeField] private Material _material;
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private List<GameObject> _bulletPool = new List<GameObject>();
+    private List<GameObject> _bulletPool = new List<GameObject>();
     private int _poolSize = 10;
-    Vector3 position;
-    GameObject bullet;
+    Vector3 _position;
+    GameObject _bullet;
 
     private void Start()
     {
-        //create pool
+        //create pool (no randomizing of colors yet)
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-            bullet.SetActive(false);
-            _bulletPool.Add(bullet);
+            GameObject _bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+            _bullet.SetActive(false);
+            _bulletPool.Add(_bullet);
         }
+}
 
-
-        foreach (GameObject bullet in _bulletPool)
+private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
-            propertyBlock.SetColor("_Color", Random.ColorHSV());
-            bullet.GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+            HandleMouseClick();
         }
     }
 
-    //function to use to instantiate new visible bullet in the game view
-    private void HandleMouseClick()
+    //use _bullet from pool (or create more if neede)
+    private GameObject HandleMouseClick()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        //Color color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         if (Physics.Raycast(ray, out hit))
         {
-            foreach (GameObject bullet in _bulletPool)
+            foreach (GameObject _bullet in _bulletPool)
             {
-                //FIX
-                bullet.transform.position=hit.point;
+                if (!_bullet.activeInHierarchy)
+                {
+                    _bullet.SetActive(true);
+                    _bullet.transform.position = hit.point;
+                    MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+                    propertyBlock.SetColor("_Color", Random.ColorHSV());
+                    _bullet.GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+                    //Debug.Log(_bullet.GetComponent<Renderer>().material.color);
+                    return _bullet;
+                }
             }
         }
+        // No inactive _bullets available, create a new one (optional)
+        GameObject new_bullet = Instantiate(_bulletPrefab, _position, Quaternion.identity);
+        _bulletPool.Add(new_bullet);
+        return _bullet;
     }
-
-
-
-    //use bullet from pool - CHANGE
-
-    // No inactive bullets available, create a new one (optional) - OK
-    //if (Input.GetMouseButtonDown(0) && bullet.activeInHierarchy)
-    //{
-    //    GameObject newBullet = Instantiate(_bulletPrefab, position, Quaternion.identity);
-    //    _bulletPool.Add(newBullet);
-    //}
 }
+
