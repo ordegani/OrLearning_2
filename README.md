@@ -214,3 +214,33 @@ PerformanceCounterCategory();
 ```
 
 - You don't have to change the names of objects that were created by using the Visual Studio designer tools to make them fit other guidelines.
+
+////////////////////////////////////
+יצירת ענף x בגיט:
+git checkout -b new_branch_name
+מעבר לענף x בגיט:
+git checkout new_branch_name
+עדכון ענף נוכחי בשינויים שנוצרו בענף x:
+git rebase --interactive new_branch_name
+צפייה בענפים וגם באיזה מהם אנחנו נמצאים כעת:
+git branch
+צפייה במצב השינויים-מה הוסף, מה לא הוסף, ומה לא במעקב:
+git status
+הוספה של שינוי/מסמך או הוספה של הכל:
+git add או git add .
+״הפקדה״, commit, לאחר ההוספה (כולל הערה):
+git commit -m "Your commit message here"
+״דחיפה״ לענף:
+git push
+להוסיף חיבור ל-remote repository (במקרה שבו עבדתי עד עכשיו רק מקומוית על הפרויקט שלי):
+
+git remote add origin <remote_repository_URL>
+קביעת ענף כהענף ״לדחוף אליו״ תוך כדי הדחיפה:
+git push -u origin main  
+התגברות של אי חפיפה בקודים ע״י מיזוג:
+לפני ביצוע המיזוג, חשוב לוודא שהענף המקבל (למשל, main) מעודכן עם השינויים האחרונים. זה הכרחי כי ייתכן שבזמן שעבדתם על הקוד שלכם, אחד מחברי הצוות כבר עשה שינויים ב-main ועדכן אותו. אם לא נוודא שה-main אצלנו (ב-local) עדכני, אנחנו עלולים להתקל בקונפליקטים מיותרים בעת המיזוג. לכן, לפני ביצוע ה-merge, נריץ את הפקודה הבאה:
+git pull origin main
+
+פקודה זו תוודא שה-main המקומי (local) מעודכן עם כל השינויים האחרונים. רק לאחר מכן נוכל לבצע את ה-merge בצורה בטוחה ומסודרת:
+
+git merge branch_to_merge
