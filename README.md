@@ -7,7 +7,7 @@ Facilitates Collaboration: DRY enhances collaboration among team members. When c
 Avoidance of Copy-Paste Errors: Copying and pasting code can introduce errors, especially if changes are made inconsistently across duplicated sections. DRY minimizes the need for copy-pasting by encouraging the creation of reusable units of code, reducing the risk of introducing errors.
 Testability: Reusable and modular code is often easier to test since specific functionalities are encapsulated in distinct units. This makes it simpler to write unit tests and ensure that changes do not inadvertently affect unrelated parts of the system.
 
-
+///////////////////////////////////////////////////////////
 
 [Source](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names), but we have a bit of a polished version:
 
